@@ -1,39 +1,78 @@
 <script lang="ts">
-    let plants = $state(0);
-    let pots = $state(0);
-    let seeds = $state(0);
-    let water = $state(0);
+	let plants = $state(0);
+	let pots = $derived(() => plants);
+	let seeds = $derived(() => plants * 3);
+	let water = $derived(() => plants * 4);
+	let bags = $derived(() => plants * 44 / 5);
+	let raw = $derived(() => plants * 44);
+  
 
-    $effect(() => {
-        pots = plants;
-        seeds = plants * 3;
-        water = plants * 4;
-    });
+  
 </script>
 
 <svelte:head>
-  <title>Page</title>
+	<title>Page</title>
 </svelte:head>
 
-<div class="card-actions items-end justify-between">
-  <div  class="flex flex-col w-full">
-    <label for="plants">Wie viele Pflanzen?</label>
-    <input type="text" name="plants" bind:value={plants} class="input input-bordered w-full" />
-  </div>
+<div class="card w-96">
+	<div class="card-body">
+		<h2 class="card-title">Wie viele Pflanzen?</h2>
+		<div class="card-actions justify-end">
+			<div class="flex w-full flex-col">
+				<input type="text" name="plants" bind:value={plants} class="input input-bordered w-full" />
+			</div>
+		</div>
+	</div>
 </div>
-<div class="stats stats-vertical lg:stats-horizontal shadow">
-  <div class="stat">
-    <div class="stat-title">Töpfe</div>
-    <div class="stat-value">{pots}</div>
-  </div>
 
-  <div class="stat">
-    <div class="stat-title">Samen</div>
-    <div class="stat-value">{seeds}</div>
-  </div>
+<div class="card w-96">
+	<div class="card-body">
+		<h2 class="card-title">Benötigte Rohstoffe</h2>
+		<div class="card-actions justify-end">
+			<div class="overflow-x-auto w-full">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="w-1/3">Töpfe</th>
+              <th class="w-1/3">Samen</th>
+              <th class="w-1/3">Wasser</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{pots()}</td>
+              <td>{seeds()}</td>
+              <td>{water()}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+		</div>
+	</div>
+</div>
 
-  <div class="stat">
-    <div class="stat-title">Wasser</div>
-    <div class="stat-value">{water}</div>
-  </div>
+<div class="card w-96">
+	<div class="card-body">
+		<h2 class="card-title">Erwartete Erträge</h2>
+		<div class="card-actions justify-end">
+      <div class="overflow-x-auto w-full">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="w-1/2">Rohblüten</th>
+              <th class="w-1/2">Weedbags</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{raw()}</td>
+              <td>{bags()}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+		</div>
+	</div>
 </div>
