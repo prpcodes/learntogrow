@@ -65,7 +65,7 @@
 					dass sich eine Wasserquelle in der unmittelbaren Umgebung befindet.
 				</li>
 				<li>
-					<b>Gießen:</b> Sobald die Töpfe aufgestellt sind, benutze sie. Drücke die Taste „G“ und gieße
+					<b>Gießen:</b> Sobald die Töpfe aufgestellt sind, drücke die Taste „G“ und gieße jeden Topf
 					zweimal.
 				</li>
 				<li><b>Erneut gießen:</b> Warte 2 Stunden und gieße dann erneut zweimal.</li>
