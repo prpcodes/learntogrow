@@ -25,7 +25,7 @@
 		let time = new Date();
 		time.setHours(parseInt(start_time.split(':')[0]));
 		time.setMinutes(parseInt(start_time.split(':')[1]));
-		for (let i = 0; i < 4; i++) {
+		for (let i = 0; i < 3; i++) {
 			times.push(new Date(time.getTime() + i * 2 * 60 * 60 * 1000));
 		}
 		return times;
@@ -68,8 +68,7 @@
 					<b>Gießen:</b> Sobald die Töpfe aufgestellt sind, drücke die Taste „G“ und gieße jeden Topf
 					zweimal.
 				</li>
-				<li><b>Erneut gießen:</b> Warte 2 Stunden und gieße dann erneut zweimal.</li>
-				<li><b>Düngen:</b> Warte nochmals 2 Stunden und dünge die Pflanzen.</li>
+				<li><b>Düngen und gießen:</b> Warte 2 Stunden und dünge einmal, aschließend gieße zweimal.</li>
 				<li><b>Ernten:</b> Warte 2 Stunden und ernte schließlich die Pflanzen.</li>
 			</ul>
 		</div>
@@ -127,10 +126,9 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th class="w-1/4">2x Gießen</th>
-					<th class="w-1/4">2x Gießen</th>
-					<th class="w-1/4">1x Düngen</th>
-					<th class="w-1/4">Ernten</th>
+					<th class="w-1/3">2x Gießen</th>
+					<th class="w-1/3">2x Gießen, 1x Düngen</th>
+					<th class="w-1/3">Ernten</th>
 				</tr>
 			</thead>
 			<tbody>
