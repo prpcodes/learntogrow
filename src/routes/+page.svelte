@@ -125,19 +125,20 @@
 	<table>
 		<thead>
 			<tr>
-				<th>2x Gießen</th>
-				<th>2x Gießen & 1x Düngen</th>
-				<th>1x Schneiden</th>
-				<th>Ernten</th>
+				{#each watering() as time}
+				<th>
+					{time.toLocaleTimeString([], time_options)}
+				</th>
+			{/each}
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				{#each watering() as time}
-					<td>
-						{time.toLocaleTimeString([], time_options)}
-					</td>
-				{/each}
+			
+				<td>2x Gießen</td>
+				<td>2x Gießen & 1x Düngen</td>
+				<td>2x Gießen & 1x Schneiden</td>
+				<td>Ernten</td>
 			</tr>
 		</tbody>
 	</table>
