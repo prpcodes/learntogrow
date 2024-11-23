@@ -1,14 +1,22 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 
-	let plants = $state(1);
-	let pots = $derived(() => plants);
-	let seeds = $derived(() => plants * 3);
-	let water = $derived(() => plants * 4);
-	let bags = $derived(() => (plants * 44) / 5);
-	let raw = $derived(() => plants * 44);
+  const time_options: Intl.DateTimeFormatOptions = {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  } 
 
-	// watering is every four hours, 3 times, starting at the time the first plant was planted
+	let plants = $state(1);
+	let pots = $derived(plants);
+	let seeds = $derived( plants * 3);
+	let water = $derived( plants * 4);
+  // floor division
+	let bags = $derived(Math.floor((plants * 44) / 5))
+	let raw = $derived(plants * 44);
+  let surplus = $derived(raw % 5);
+
+  // maintenance times, every 2 hours 
 	let start_time = $state("00:00");
 	let watering = $derived(() => {
 		let times = [];
@@ -23,7 +31,7 @@
 
 
   onMount(() => {
-    start_time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+    start_time = new Date().toLocaleTimeString([], time_options);
   });
 </script>
 
@@ -52,9 +60,9 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>{pots()}</td>
-					<td>{seeds()}</td>
-					<td>{water()}</td>
+					<td>{pots}</td>
+					<td>{seeds}</td>
+					<td>{water}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -69,12 +77,14 @@
 				<tr>
 					<th class="w-1/2">Rohblüten</th>
 					<th class="w-1/2">Weedbags</th>
+          <th class="w-1/2">Überschuss</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>{raw()}</td>
-					<td>{bags()}</td>
+					<td>{raw}</td>
+					<td>{bags}</td>
+          <td>{surplus}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -96,13 +106,9 @@
 			<tbody>
 				<tr>
 					{#each watering() as time}
-						<td
-							>{time.toLocaleTimeString([], {
-								hour: '2-digit',
-								minute: '2-digit',
-								hour12: false
-							})}</td
-						>
+						<td>
+              {time.toLocaleTimeString([], time_options)}
+            </td>
 					{/each}
 				</tr>
 			</tbody>
