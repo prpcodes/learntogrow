@@ -61,12 +61,12 @@
 
 <article>
 	<h2>Paramter</h2>
-	<label for="plants">Wie viele Pflanzen?</label>
+	<label for="plants">Wie viele Pflanzen werden gepflanzt?</label>
 	<input type="text" name="plants" bind:value={plants}/>
 	
 
 	<form onsubmit={calculate_time}>
-		<label for="time">Wann wurde die Erste angepflanzt?</label>
+		<label for="time">Wann wurde die erste Pflanze gepflanzt? <span data-tooltip="wird lokal gespeichert">*</span></label>
 		<!-- svelte-ignore a11y_no_redundant_roles -->
 		<fieldset role="group">
 		  <input type="time" name="time"/>
@@ -83,16 +83,18 @@
 	<table>
 		<thead>
 			<tr>
-				<th>Töpfe</th>
-				<th>Samen</th>
+				<th>Schere  <span data-tooltip="wiederverwendbar">*</span></th>
+				<th>Topf</th>
 				<th>Wasser</th>
+				<th>Cannabissamen</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
+				<td>1</td>
 				<td>{pots}</td>
-				<td>{seeds}</td>
 				<td>{water}</td>
+				<td>{seeds}</td>
 			</tr>
 		</tbody>
 	</table>
@@ -124,7 +126,7 @@
 		<thead>
 			<tr>
 				<th>2x Gießen</th>
-				<th>2x Gießen, 1x Düngen</th>
+				<th>2x Gießen & 1x Düngen</th>
 				<th>1x Schneiden</th>
 				<th>Ernten</th>
 			</tr>
@@ -150,7 +152,7 @@
 		  <strong>❔ How To Grow?</strong>
 		</p>
 	  </header>
-	  <h4>Benötigte Gegenstände p. Pflanze</h4>
+	  <h4>Benötigte Gegenstände pro Pflanze</h4>
 	  <ul>
 		<li>1x Schere (wiederverwentbar)</li>
 		<li>6x Wasser</li>
@@ -179,7 +181,7 @@
 		<li>
 			<b>Scheiden und gießen:</b> Warte eine Stunde, gieße zwei Mal und bescheide die Pflanze.
 		</li>
-		<li><b>Ernten:</b> Warte eine Stunde und ernte schließlich die Pflanzen.</li>
+		<li><b>Ernten:</b> Warte eine weitere Stunde und ernte schließlich die Pflanzen.</li>
 	</ol>
 	</article>
 </dialog>
