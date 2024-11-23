@@ -21,7 +21,7 @@
 </script>
 
 <svelte:head>
-	<title>Page</title>
+	<title>Learn To Grow</title>
 </svelte:head>
 
 <section class="flex w-full flex-col px-4">
