@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { onMount } from "svelte";
+
 	let plants = $state(1);
 	let pots = $derived(() => plants);
 	let seeds = $derived(() => plants * 3);
@@ -7,7 +9,7 @@
 	let raw = $derived(() => plants * 44);
 
 	// watering is every four hours, 3 times, starting at the time the first plant was planted
-	let start_time = $state(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }));
+	let start_time = $state("00:00");
 	let watering = $derived(() => {
 		let times = [];
 		let time = new Date();
@@ -18,6 +20,11 @@
 		}
 		return times;
 	});
+
+
+  onMount(() => {
+    start_time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+  });
 </script>
 
 <svelte:head>
