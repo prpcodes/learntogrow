@@ -48,7 +48,7 @@
 	<input type="time" name="time" class="input input-bordered w-full" bind:value={start_time} />
 	<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 	<div tabindex="0" class="collapse border-primary border mt-4">
-		<div class="collapse-title font-medium">How to?</div>
+		<div class="collapse-title">How to?</div>
 		<div class="collapse-content">
 		 
 			<ul>
