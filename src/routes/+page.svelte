@@ -7,7 +7,7 @@
     $effect(() => {
         pots = plants;
         seeds = plants * 3;
-        water = plants * 2;
+        water = plants * 4;
     });
 </script>
 
