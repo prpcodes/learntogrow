@@ -28,10 +28,10 @@
 		let time = new Date();
 		time.setHours(parseInt(start_time.split(':')[0]));
 		time.setMinutes(parseInt(start_time.split(':')[1]));
+		times.push(new Date(time.getTime()));
 		times.push(new Date(time.getTime() + 2 * 60 * 60 * 1000)); // 2 hours
-		times.push(new Date(time.getTime() + 3 * 60 * 60 * 1000)); // 1 hour after the first
-		times.push(new Date(time.getTime() + 4 * 60 * 60 * 1000)); // 1 hour after the second
-		times.push(new Date(time.getTime() + 5 * 60 * 60 * 1000)); // 1 hour after the third
+		times.push(new Date(time.getTime() + 3 * 60 * 60 * 1000)); // 1 hour
+		times.push(new Date(time.getTime() + 4 * 60 * 60 * 1000)); // 1 hour
 
 		return times;
 	});
